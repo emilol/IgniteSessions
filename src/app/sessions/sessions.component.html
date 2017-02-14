@@ -1,0 +1,10 @@
+<ng-container *ngFor="let day of getDays()">
+  <div class="sessions" *ngIf="showDay(day)">
+    <div class="row day">
+      <div class="col s12"><h4>{{day}}</h4></div>
+    </div>
+    <ng-container *ngFor="let session of sessions[day]">
+      <session [model]="session" *ngIf="!isOver(session)" class="session"></session>
+    </ng-container>
+  </div>
+</ng-container>

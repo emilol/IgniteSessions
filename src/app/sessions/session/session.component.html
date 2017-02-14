@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col m1 s2 push-s10 session-time">{{time(session)}}</div>
+  <div class="col m9 s12">
+      <div class="session-name"><a (click)="toggle(session)" href="#">{{session.Name}}</a></div>
+      <ng-container *ngFor="let speaker of session.Speakers">
+        <a class="chip speaker" *ngIf="speaker.Twitterusername" [href]="twitterUrl(speaker)" target="_new">
+          <img *ngIf="speaker.PhotoPath" [src]="speaker.PhotoPath" alt="">
+          {{speaker.Name}}
+          <i class="fa fa-twitter blue-text" aria-hidden="true"></i>
+        </a>
+        <div class="chip speaker" *ngIf="!speaker.Twitterusername">
+          <img *ngIf="speaker.PhotoPath" [src]="speaker.PhotoPath" alt="">
+          {{speaker.Name}}
+        </div>
+      </ng-container>
+      <div *ngIf="session.ShowDescription">{{session.Description}}</div>
+  </div>
+  <div class="col m1 duration grey-text">{{session.Details.Duration}}</div>
+  <div class="col m1 room grey-text">{{session.Schedule.Room}}</div>
+</div>
